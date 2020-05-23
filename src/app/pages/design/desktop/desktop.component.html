@@ -1,0 +1,28 @@
+<div class="row m-0 p-5 design-area">
+    <ngx-model class="w-100 m-0" *ngIf="model" [model]="model"
+               (modelSelect)="onModelElementSelect()">
+    </ngx-model>
+
+    <ngx-accessory *ngFor="let accessory of accessories"
+                   [accessory]="accessory"
+                   [style.left.px]="accessory.properties.props[accessory.cma][accessory.location][model?.angle].x"
+                   [style.top.px]="accessory.properties.props[accessory.cma][accessory.location][model?.angle].y"
+                   [properties]="accessory.properties.props[accessory.cma][accessory.location][model.angle]"
+                   (accessoryElementRemove)="onRemoveAccessoryElement(accessory)"
+                   (click)="onAccessoryElementSelect(accessory)"></ngx-accessory>
+
+    <div *ngIf="currentElement && currentElement != model">
+        <mat-icon class="point"
+                  *ngFor="let location of currentElement.properties.props[currentElement.cma] | keyvalue"
+                  (click)="currentElement.location = location.key"
+                  [style.display]="currentElement.location == location.key || currentElement.location == undefined ? 'none' : 'block'"
+                  [style.left.px]="location.value[model.angle].x"
+                  [style.top.px]="location.value[model.angle].y">my_location
+        </mat-icon>
+    </div>
+</div>
+
+<div class="row m-0 property-area">
+    <ngx-color-manager class="col-sm-6 m-0 p-3 propertyies" *ngIf="currentColorModel"
+                       [currentColorModel]="currentColorModel"></ngx-color-manager>
+</div>
