@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ProductModelService} from '../../services/product-model.service';
-import {LimitedEditionService} from '../../services/limited-edition';
+import {ProductService} from '../../services/product.service';
 
 @Component({
   selector: 'ngx-home',
@@ -11,10 +10,10 @@ export class HomeComponent implements OnInit {
   productModels: any = [];
 
   constructor(
-      private limitedEditionService: LimitedEditionService,
+      private productService: ProductService,
   ) { }
 
   ngOnInit() {
-    this.limitedEditionService.getAll(productModels => this.productModels = productModels.slice(0, 3));
+    this.productService.getAll(productModels => this.productModels = productModels.slice(0, 3));
   }
 }

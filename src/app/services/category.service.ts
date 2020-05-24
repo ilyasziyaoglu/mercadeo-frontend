@@ -1,13 +1,12 @@
 import { Injectable } from '@angular/core';
-import { BaseService } from './base/base-service';
-import { HttpService } from './base/http.service';
+import {BaseService} from './base/base-service';
+import {HttpService} from './base/http.service';
 
 @Injectable({
   providedIn: 'root',
 })
-export class UserService extends BaseService {
-
-  basePath = '/user';
+export class CategoryService extends BaseService {
+  private basePath = 'category';
 
   constructor(
       httpService: HttpService,

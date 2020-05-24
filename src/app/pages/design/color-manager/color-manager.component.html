@@ -1,9 +1,0 @@
-Color
-<div class="row m-0">
-  <div class="rounded-circle color"
-       *ngFor="let color of currentColorModel.colors | keyvalue"
-       (click)="onColorSelect(color)"
-       [ngClass]="{'active' : color.key === currentColorName}"
-       [style.backgroundColor]="color.key">
-  </div>
-</div>

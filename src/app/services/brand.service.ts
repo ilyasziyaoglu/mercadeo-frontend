@@ -1,13 +1,12 @@
 import { Injectable } from '@angular/core';
-import {BaseService} from './base/base-service';
 import {HttpService} from './base/http.service';
+import {BaseService} from './base/base-service';
 
 @Injectable({
   providedIn: 'root',
 })
-export class LimitedEditionService extends BaseService {
-
-  private basePath = 'limited-edition';
+export class BrandService extends BaseService {
+  private basePath = 'brand';
 
   constructor(
       httpService: HttpService,

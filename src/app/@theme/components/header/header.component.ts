@@ -48,8 +48,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   // menuItems: [
   //   { title: 'Home', link: 'home' },
   //   { title: 'Design', link: 'design' },
-  //   { title: 'Limited Edition', link: 'limited-edition' },
-  //   { title: 'Jewelry', link: 'jewelry' },
+  //   { title: 'Shop', link: 'shop' },
   //   { title: 'About', link: 'about' },
   //   { title: 'Contact Us', link: 'contact' }
   // ];

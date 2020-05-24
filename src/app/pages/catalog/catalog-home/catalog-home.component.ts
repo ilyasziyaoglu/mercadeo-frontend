@@ -9,13 +9,13 @@ export class CatalogHomeComponent implements OnInit {
 
     @Input() service: any;
 
-    productModels: any = [];
+    products: any = [];
 
     constructor() {
     }
 
     ngOnInit() {
-        this.service.getAll(productModels => this.productModels = productModels);
+        this.service.getAll(products => this.products = products);
     }
 
     onFilter(filter: any) {
@@ -25,7 +25,7 @@ export class CatalogHomeComponent implements OnInit {
             size: 100,
         };
         this.service.filter(pageReq, results => {
-            this.productModels = results.data;
+            this.products = results.data;
         });
     }
 }

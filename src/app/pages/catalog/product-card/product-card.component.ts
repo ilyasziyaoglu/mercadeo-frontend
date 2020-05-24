@@ -1,6 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {MyFavoritesService} from '../../../services/my-favorites.service';
-import {Router} from '@angular/router';
 
 @Component({
   selector: 'ngx-product-card',

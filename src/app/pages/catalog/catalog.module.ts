@@ -36,7 +36,7 @@ import {AtomsModule} from '../../atoms/atoms.module';
         NbInputModule,
         RouterModule,
         CatalogRouterModule,
-        AtomsModule
+        AtomsModule,
     ],
     exports: [
         ProductCardComponent,

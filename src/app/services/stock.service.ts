@@ -5,8 +5,8 @@ import {HttpService} from './base/http.service';
 @Injectable({
   providedIn: 'root',
 })
-export class ProductOptionService extends BaseService {
-  private basePath = 'product-option';
+export class StockService extends BaseService {
+  private basePath = 'stock';
 
   constructor(
       httpService: HttpService,

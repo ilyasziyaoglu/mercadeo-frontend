@@ -1,5 +1,5 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
-import {ProductModelService} from '../../../services/product-model.service';
+import {ProductService} from '../../../services/product.service';
 
 @Component({
     selector: 'ngx-filter',
@@ -15,14 +15,11 @@ export class FilterComponent implements OnInit {
     filter = {minPrice: null, maxPrice: null, categories: [], colors: []};
 
     constructor(
-        private productModelService: ProductModelService,
+        private productService: ProductService,
     ) {
     }
 
     ngOnInit() {
-        this.productModelService.getColorList(colors => {
-            this.colors = colors;
-        });
     }
 
     onFilterEvent() {
