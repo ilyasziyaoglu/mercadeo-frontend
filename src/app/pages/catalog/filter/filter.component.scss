@@ -1,5 +1,10 @@
 :host * :not(i) {
   font-family: Optima,serif;
+  position: static;
+}
+
+nb-card {
+  position: static;
 }
 
 p {
@@ -12,6 +17,7 @@ nb-select {
 }
 
 input {
+  margin: 0.5rem;
   border-color: lightgrey !important;
   border-radius: 0 !important;
   &:hover {
@@ -24,7 +30,7 @@ input {
   float: left;
   width: 1.5rem;
   height: 1.5rem;
-  margin: 0.2rem;
+  margin: 0.5rem;
   border-radius: 50%;
   cursor: pointer;
 }

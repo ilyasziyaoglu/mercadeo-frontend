@@ -1,5 +1,9 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {ProductService} from '../../../services/product.service';
+import {FormControl, FormGroup} from '@angular/forms';
+import {BrandService} from '../../../services/brand.service';
+import {ColorService} from '../../../services/color.service';
+import {SizeService} from '../../../services/size.service';
 
 @Component({
     selector: 'ngx-filter',
@@ -11,36 +15,34 @@ export class FilterComponent implements OnInit {
     @Output() onFilter = new EventEmitter();
 
     colors: any = [];
-    selectedColors: any = [];
     filter = {minPrice: null, maxPrice: null, categories: [], colors: []};
+    brands: any = [];
+
+    filterForm = new FormGroup({
+        brands: new FormControl([]),
+        colors: new FormControl([]),
+        minPrice: new FormControl(null),
+        maxPrice: new FormControl(null),
+        sizes: new FormControl([]),
+    });
+    private sizes: any = [];
 
     constructor(
         private productService: ProductService,
+        private brandService: BrandService,
+        private colorService: ColorService,
+        private sizeService: SizeService,
+
     ) {
     }
 
     ngOnInit() {
+        this.brands = this.brandService.getAll(brands => this.brands = brands);
+        this.colors = this.colorService.getAll(colors => this.colors = colors);
+        this.sizes = this.sizeService.getAll(sizes => this.sizes = sizes.sort((a, b) => a.id - b.id));
     }
 
-    onFilterEvent() {
-        this.filter.colors = this.selectedColors.map(c => c.colorCode);
-        this.onFilter.emit(this.filter);
-    }
-
-    onColorSelect(color: any) {
-        if (this.colorIncludes(color)) {
-            this.deleteColor(color);
-        } else {
-            this.selectedColors.push(color);
-        }
-    }
-
-    colorIncludes(color) {
-        return this.selectedColors.find(c => c.colorCode === color.colorCode);
-    }
-
-    deleteColor(color) {
-        const index = this.selectedColors.findIndex(c => c.colorCode === color.colorCode);
-        this.selectedColors.splice(index, 1);
+    onSubmit(value: any) {
+        this.onFilter.emit(value);
     }
 }

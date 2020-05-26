@@ -77,6 +77,11 @@
 
   //// BENIM EKLEDIKLERIM
 
+  .navbar-brand * {
+    display: block;
+    float: left;
+  }
+
   i {
     font-size: 1.5rem;
   }

@@ -5,6 +5,9 @@ import {NbCardModule, NbInputModule, NbSelectModule} from '@nebular/theme';
 import {FormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {BasketComponent} from './basket.component';
+import {CatalogModule} from '../catalog/catalog.module';
+import {AtomsModule} from '../../atoms/atoms.module';
+import {MatGridListModule} from '@angular/material/grid-list';
 
 @NgModule({
     declarations: [
@@ -21,7 +24,10 @@ import {BasketComponent} from './basket.component';
         FormsModule,
         NbInputModule,
         RouterModule,
-    ],
+        CatalogModule,
+        AtomsModule,
+        MatGridListModule
+    ]
 })
 export class BasketModule {
 }

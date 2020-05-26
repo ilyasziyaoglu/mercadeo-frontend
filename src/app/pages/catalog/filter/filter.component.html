@@ -1,37 +1,50 @@
- <nb-card class="rounded-0 m-1 p-3">
-    <div class="row w-100 m-0 pt-3">
-        <label for="category">Category</label>
-        <nb-select multiple class="w-100 rounded-0" [(ngModel)]="filter.categories" id="category" fullWidth placeholder="Category">
-            <nb-option value="">All</nb-option>
-            <nb-option value="usa">Mag</nb-option>
-            <nb-option value="turkey">Tag</nb-option>
-            <nb-option value="italia">Yok</nb-option>
-        </nb-select>
-    </div>
-
-    <div class="row w-100 m-0 pt-3">
-        <label class="w-100">Color</label>
-        <div class="color" *ngFor="let color of colors"
-             [ngClass]="{'active': colorIncludes(color)}"
-             (click)="onColorSelect(color)"
-             [style.backgroundColor]="color.colorCode">
+<nb-card class="m-0 p-3">
+    <form [formGroup]="filterForm" (ngSubmit)="onSubmit(filterForm.value)">
+        <div class="row w-100 m-0 pt-3">
+            <mat-form-field class="w-100">
+                <mat-label>Brand</mat-label>
+                <mat-select formControlName="brands" multiple>
+                    <mat-option *ngFor="let brand of brands" [value]="brand">{{brand.name}}</mat-option>
+                </mat-select>
+            </mat-form-field>
         </div>
-    </div>
 
-    <div class="row w-100 m-0 pt-3">
-        <label class="w-100" for="min">Price</label>
-        <input class="col-sm mr-2" id="min" nbInput fullWidth status="primary"
-               [(ngModel)]="filter.minPrice"
-               type="number" min="0" max="9999"
-               placeholder="Min">
-        <input class="col-sm ml-2" id="max" nbInput fullWidth status="primary"
-               [(ngModel)]="filter.maxPrice"
-               type="number" min="0" max="9999"
-               placeholder="Max">
-    </div>
+        <div class="row w-100 m-0 pt-3">
+            <mat-form-field class="w-100">
+                <mat-label>Color</mat-label>
+                <mat-select formControlName="colors" multiple>
+                    <mat-option *ngFor="let color of colors" [value]="color">
+                        <div class="color" [style.backgroundColor]="color.name"></div>
+                        <span>{{color.name}}</span>
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
 
-    <div class="row w-100 m-0 pt-3">
-        <ngx-button (click)="onFilterEvent()" class="w-100" label="Filter" icon="fas fa-filter"></ngx-button>
-    </div>
-    <br>
- </nb-card>
+        <div class="row w-100 m-0 pt-3">
+            <label class="w-100" for="min">Price</label>
+            <input class="col-sm" id="min" nbInput fullWidth status="primary"
+                   type="number" min="0" max="9999"
+                   formControlName="minPrice"
+                   placeholder="Min">
+            <input class="col-sm" id="max" nbInput fullWidth status="primary"
+                   formControlName="maxPrice"
+                   type="number" min="0" max="9999"
+                   placeholder="Max">
+        </div>
+
+        <div class="row w-100 m-0 pt-3">
+            <mat-form-field class="w-100">
+                <mat-label>Size</mat-label>
+                <mat-select formControlName="sizes" multiple>
+                    <mat-option *ngFor="let size of sizes" [value]="size">{{size.name}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <div class="row w-100 m-0 pt-3">
+            <ngx-button class="w-100" label="Filter" icon="fas fa-filter"></ngx-button>
+        </div>
+        <br>
+    </form>
+</nb-card>

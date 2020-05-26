@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ProductService} from '../../services/product.service';
+import {ProductFilterService} from '../../services/product-filter.service';
 
 @Component({
   selector: 'ngx-shop',
@@ -9,7 +9,7 @@ import {ProductService} from '../../services/product.service';
 export class ShopComponent implements OnInit {
 
   constructor(
-      private service: ProductService,
+      private service: ProductFilterService,
   ) { }
 
   ngOnInit() {

@@ -14,14 +14,31 @@ import {
 import {FilterComponent} from './filter/filter.component';
 import {MatSliderModule} from '@angular/material/slider';
 import {DetailComponent} from './detail/detail.component';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {CatalogRouterModule} from './catalog-router.module';
 import {CatalogHomeComponent} from './catalog-home/catalog-home.component';
 import {AtomsModule} from '../../atoms/atoms.module';
+import {ProductImageGalleryComponent} from './product-image-gallery/product-image-gallery.component';
+import {ScrollingModule} from '@angular/cdk/scrolling';
+import {MatSelectModule} from '@angular/material/select';
+import {ColorSeletComponent} from './color-selet/color-selet.component';
+import {SizeSelectComponent} from './size-select/size-select.component';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {CategoriesComponent} from './categories/categories.component';
 
 @NgModule({
-    declarations: [CatalogComponent, ProductCardComponent, FilterComponent, DetailComponent, CatalogHomeComponent],
+    declarations: [
+        CatalogComponent,
+        ProductCardComponent,
+        FilterComponent,
+        DetailComponent,
+        CatalogHomeComponent,
+        ProductImageGalleryComponent,
+        ColorSeletComponent,
+        SizeSelectComponent,
+        CategoriesComponent,
+    ],
     imports: [
         CommonModule,
         NbCardModule,
@@ -37,6 +54,10 @@ import {AtomsModule} from '../../atoms/atoms.module';
         RouterModule,
         CatalogRouterModule,
         AtomsModule,
+        ScrollingModule,
+        MatSelectModule,
+        MatCheckboxModule,
+        ReactiveFormsModule,
     ],
     exports: [
         ProductCardComponent,
@@ -45,6 +66,8 @@ import {AtomsModule} from '../../atoms/atoms.module';
         ProductCardComponent,
         CatalogComponent,
         CatalogHomeComponent,
-    ],
+        ColorSeletComponent,
+        SizeSelectComponent
+    ]
 })
 export class CatalogModule {}

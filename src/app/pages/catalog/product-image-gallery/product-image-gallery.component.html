@@ -1,0 +1,14 @@
+<div class="row main-img-wrapper d-flex justify-content-center align-content-center">
+  <img class="main-img" [src]="selectedProductColor.imgUrl">
+</div>
+<hr>
+<div class="row d-flex justify-content-center">
+  <div class="col-sm-1 item m-1 p-0 d-flex justify-content-start align-content-center" *ngFor="let productColor of productColors">
+    <img class="child-image"
+         [src]="productColor.imgUrl"
+         (click)="onSelectImg(productColor)"
+         [style.opacity]="selectedProductColor == productColor ? 1 : 0.5"
+         [style.border]="selectedProductColor == productColor ? '1px solid black' : ''">
+  </div>
+</div>
+<hr>

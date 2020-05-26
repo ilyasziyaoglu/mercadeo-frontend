@@ -3,7 +3,6 @@ import {ProductService} from '../../../services/product.service';
 import {ActivatedRoute} from '@angular/router';
 import {MyFavoritesService} from '../../../services/my-favorites.service';
 import {BasketService} from '../../../services/basket.service';
-import {NbToastrService} from '@nebular/theme';
 
 @Component({
     selector: 'ngx-detail',
@@ -13,76 +12,53 @@ import {NbToastrService} from '@nebular/theme';
 export class DetailComponent implements OnInit {
 
     private product: any;
-    features: any = ['Iyi', 'Mukemmel', 'Harika'];
-    private productModel: any;
-    private productOption: any;
-    private basketButtonContent: any;
+    selectedProductColors: any = [];
+    selectedSizes: any = [];
+    quantity: number = 1;
+    productImages: any = [];
+    lastSelectedColor: any;
 
     constructor(
         private productService: ProductService,
         private route: ActivatedRoute,
         private myFavoritesService: MyFavoritesService,
         private basketService: BasketService,
-        private toastrService: NbToastrService,
-    ) {}
+    ) {
+    }
 
     ngOnInit() {
         this.route.paramMap.subscribe(params => {
-            this.productService.get(parseInt(params.get('productId'), 10), result => {
+            this.productService.get(parseInt(params.get('id'), 10), result => {
                 this.product = result;
-                const defaultModelId = parseInt(params.get('id'), 10);
-                this.productModel = this.product.productModels.find(model => model.id === defaultModelId);
-                this.sortProductOptions(this.productModel.productOptions);
-                this.productOption = this.productModel.productOptions.find(option => option.productSize === 'S');
-                const inBaskets = this.basketService.includes(this.productOption);
-                this.basketButtonContent = inBaskets ?
-                    {title: 'Remove From Basket', icon: 'fas fa-cart-arrow-down'} :
-                    {title: 'Add To Basket', icon: 'fas fas fa-cart-plus'};
+                this.product.sizes.forEach(size => size.disabled = this.product.isSizesOptional);
+                this.selectedSizes = this.product.sizes;
+                this.selectedProductColors = result.productColors.filter(pc => pc.status === 'ACTIVE').slice(0);
+                result.productColors.forEach(productColor => {
+                    this.productImages.push(productColor.imgUrl);
+                });
             });
         });
     }
 
     onAddToBasket() {
-        const basket = {...this.productOption};
-        basket.productModel = {...this.productModel};
-        basket.product = {...this.product};
+        const basket = {...this.product};
+        basket.selectedProductColors = Object.assign([], this.selectedProductColors);
+        basket.selectedSizes = Object.assign([], this.selectedSizes);
+        basket.amount = this.quantity;
         this.basketService.add(basket);
-        const inBaskets = this.basketService.includes(basket);
-        const message = inBaskets ? 'Product added to cart' : 'The product could not be added to the cart!';
-        const status = inBaskets ? 'success' : 'danger';
-        this.showToast('top-right', message, status);
-    }
-
-    showToast(position, message, status?) {
-        this.toastrService.show(
-            status || 'success',
-            message,
-            {position, status});
+        window['storage'].updateItem('baskets');
     }
 
     onToggleFavorite() {
-        this.myFavoritesService.toggle(this.productModel);
+        this.myFavoritesService.toggle(this.product);
     }
 
     getHeartIcon() {
-        const inFavorites = this.myFavoritesService.includes(this.productModel);
+        const inFavorites = this.myFavoritesService.includes(this.product);
         return inFavorites ? 'heart' : 'heart-outline';
     }
 
-    sortProductOptions(productOptions) {
-        productOptions.sort((a, b) => {
-            return (a.productSize < b.productSize) ? 1 : (a.productSize === b.productSize) ? 0 : - 1;
-        });
-        productOptions
-            .map(po => {
-                po.amount = 1;
-                return po;
-            });
-    }
-
-    onChangeModel(model: any) {
-        this.sortProductOptions(model.productOptions);
-        this.productOption = model.productOptions[0];
-        this.productModel = model;
+    onSelectColor(productColor: any) {
+        this.lastSelectedColor = productColor;
     }
 }

@@ -14,6 +14,6 @@ export class HomeComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.productService.getAll(productModels => this.productModels = productModels.slice(0, 3));
+    this.productService.getAll(productModels => this.productModels = productModels.slice(0, 4));
   }
 }

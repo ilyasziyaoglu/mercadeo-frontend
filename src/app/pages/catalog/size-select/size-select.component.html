@@ -1,0 +1,6 @@
+<div class="row mt-3 mb-3" *ngIf="items">
+    <div>{{label}}: </div>
+    <nb-select multiple [(ngModel)]="selectedItems" [placeholder]="label">
+        <nb-option *ngFor="let item of items" [value]="item">{{item.name}}</nb-option>
+    </nb-select>
+</div>

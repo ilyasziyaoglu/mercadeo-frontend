@@ -1,0 +1,19 @@
+.row {
+  margin: 0;
+  width: 100%;
+}
+
+.color {
+  display: block;
+  float: left;
+  width: 2rem;
+  height: 2rem;
+  margin: 0.3rem;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.active {
+  transform: scale(1.2);
+  border: 1px solid black;
+}

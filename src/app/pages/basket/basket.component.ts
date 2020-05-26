@@ -19,7 +19,9 @@ export class BasketComponent implements OnInit {
   }
 
   calculateTotalPrice() {
-    return this.baskets.map(basket => basket.price * basket.amount).reduce((a, b) => a + b);
+    return this.baskets.map(basket => {
+      return basket.price * basket.amount * basket.selectedProductColors.length * basket.selectedSizes.length;
+    }).reduce((a, b) => a + b);
   }
 
   checkout() {

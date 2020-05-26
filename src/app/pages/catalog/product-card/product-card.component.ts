@@ -8,7 +8,7 @@ import {MyFavoritesService} from '../../../services/my-favorites.service';
 })
 export class ProductCardComponent implements OnInit {
 
-  @Input() productModel;
+  @Input() product;
   @Input() category;
 
   constructor(
@@ -19,11 +19,11 @@ export class ProductCardComponent implements OnInit {
   }
 
   onToggleFavorite() {
-    this.myFavoritesService.toggle(this.productModel);
+    this.myFavoritesService.toggle(this.product);
   }
 
   getHeartIcon() {
-    const inFavorites = this.myFavoritesService.includes(this.productModel);
+    const inFavorites = this.myFavoritesService.includes(this.product);
     return inFavorites ? 'heart' : 'heart-outline';
   }
 

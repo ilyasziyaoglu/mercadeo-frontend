@@ -10,7 +10,7 @@ const routes: Routes = [
     component: CatalogComponent,
     children: [
       {
-        path: 'detail/:id/:productId',
+        path: 'detail/:id',
         component: DetailComponent,
       },
       {
