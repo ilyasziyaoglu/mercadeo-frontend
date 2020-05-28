@@ -1,6 +1,6 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, TemplateRef, ViewChild} from '@angular/core';
 import {BasketService} from '../../../services/basket.service';
-import {NbToastrService} from '@nebular/theme';
+import {NbToastrService, NbWindowService} from '@nebular/theme';
 
 @Component({
     selector: 'ngx-basket-card',
@@ -10,10 +10,13 @@ import {NbToastrService} from '@nebular/theme';
 export class BasketCardComponent implements OnInit {
 
     @Input() basket: any;
+    // @ts-ignore
+    @ViewChild contentTemplate: TemplateRef<any>;
 
     constructor(
         private basketService: BasketService,
         private toastrService: NbToastrService,
+        private windowService: NbWindowService,
     ) {
     }
 
@@ -31,7 +34,24 @@ export class BasketCardComponent implements OnInit {
         this.toastrService.show(status, message, {status});
     }
 
-    onAmountUpdate() {
+    onQuantityUpdate() {
         window['storage'].updateItem('baskets');
+    }
+
+    openWindow() {
+        this.windowService.open(
+            this.contentTemplate,
+            { title: 'Order Details', context: null },
+        );
+    }
+
+    getBasketDetail() {
+        const basketDetails = [];
+        this.basket.selectedProductColors.forEach(productColor => {
+            this.basket.selectedSizes.forEach(size => {
+               basketDetails.push({color: productColor.color, size: size, quantity: this.basket.quantity});
+            });
+        });
+        return basketDetails;
     }
 }

@@ -10,7 +10,6 @@
 
 input {
   border-color: lightgrey !important;
-  border-radius: 0 !important;
   &:hover {
     border-color: black !important;
   }
@@ -27,4 +26,16 @@ img {
 
 .pointer {
   cursor: pointer;
+}
+
+mat-list-item {
+  height: 1.3rem !important;
+}
+
+ngx-input {
+  width: 50% !important;
+}
+
+td, mat-list-item{
+  white-space: nowrap;
 }

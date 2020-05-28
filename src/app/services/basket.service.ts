@@ -10,9 +10,7 @@ export class BasketService {
 
     add(basket) {
         if (window['storage'].baskets) {
-            if (this.includes(basket)) {
-                this.updateBasket(basket);
-            } else {
+            if (!this.includes(basket)) {
                 window['storage'].baskets.push(basket);
                 window['storage'].updateItem('baskets');
                 return true;
@@ -41,7 +39,7 @@ export class BasketService {
             let index = 0;
             for (const productInBasket of window['storage'].baskets) {
                 if (newProduct.id == productInBasket.id) {
-                    productInBasket.amount += newProduct.amount;
+                    productInBasket.quantity += newProduct.quantity;
                     productInBasket.selectedProductColors =
                         productInBasket.selectedProductColors.concat(newProduct.selectedProductColors);
                     productInBasket.selectedSizes = productInBasket.selectedSizes.concat(newProduct.selectedSizes);

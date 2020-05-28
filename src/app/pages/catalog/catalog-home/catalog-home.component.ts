@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
+import {ProductService} from '../../../services/product.service';
 
 @Component({
     selector: 'ngx-catalog-home',
@@ -8,36 +8,12 @@ import {FormControl, FormGroup} from '@angular/forms';
 })
 export class CatalogHomeComponent implements OnInit {
 
-    @Input() service: any;
-
-    products: any = [];
-
-    constructor() {
+    constructor(
+        private productService: ProductService,
+    ) {
     }
 
     ngOnInit() {
-        this.onFilter({
-                brands: null,
-                colors: null,
-                minPrice: null,
-                maxPrice: null,
-                category1: null,
-                category2: null,
-                category3: null,
-                collection: null,
-                sizes: null,
-                tags: null,
-            });
-    }
-
-    onFilter(filter: any) {
-        const pageReq = {
-            filterDto: filter,
-            page: 0,
-            size: 50,
-        };
-        this.service.filter(pageReq, results => {
-            this.products = results.data;
-        });
+        this.productService.filter();
     }
 }

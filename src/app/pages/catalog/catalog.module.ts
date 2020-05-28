@@ -26,6 +26,8 @@ import {ColorSeletComponent} from './color-selet/color-selet.component';
 import {SizeSelectComponent} from './size-select/size-select.component';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {CategoriesComponent} from './categories/categories.component';
+import {MatListModule} from '@angular/material/list';
+import {MatIconModule} from '@angular/material/icon';
 
 @NgModule({
     declarations: [
@@ -58,6 +60,8 @@ import {CategoriesComponent} from './categories/categories.component';
         MatSelectModule,
         MatCheckboxModule,
         ReactiveFormsModule,
+        MatListModule,
+        MatIconModule
     ],
     exports: [
         ProductCardComponent,
@@ -67,7 +71,8 @@ import {CategoriesComponent} from './categories/categories.component';
         CatalogComponent,
         CatalogHomeComponent,
         ColorSeletComponent,
-        SizeSelectComponent
+        SizeSelectComponent,
+        CategoriesComponent
     ]
 })
 export class CatalogModule {}

@@ -1,35 +1,42 @@
-<div class="row m-3" *ngIf="product">
+<div class="row m-5" *ngIf="product">
     <div class="col-sm-7">
         <ngx-product-image-gallery [productColors]="product.productColors"
                                    [selectedProductColor]="lastSelectedColor || product.productColors[0]">
         </ngx-product-image-gallery>
     </div>
-    <div class="col-sm-5 detail">
-        <div class="row">
-            <p class="product-code">{{product.code}}</p>
-        </div>
-        <div class="row">
-            <p class="product-name">{{product.name}}</p>
-        </div>
-        <div class="row price">
-            <h6>$ {{product.price | number}}</h6>
-        </div>
-        <div class="row">
-            <ul>
-                <li *ngFor="let feature of product.features.split(',')">
-                    {{ feature }}
-                </li>
-            </ul>
-        </div>
-
+    <div class="col-sm-5 p-5 detail">
         <div class="row m-0 w-100">
-            <div class="col-sm-6 p-0">
-                <ngx-color-selet [product]="product"
-                                 [selectedProductColors]="selectedProductColors"
-                                 (onColorSelect)="onSelectColor($event)"></ngx-color-selet>
+            <div class="col-sm-6">
+                <div class="row">
+                    <p class="product-code">{{product.code}}</p>
+                </div>
+                <div class="row">
+                    <p class="product-name">{{product.name}}</p>
+                </div>
+                <div class="row price">
+                    <h6>$ {{product.price | number}}</h6>
+                </div>
+                <div class="row">
+                    <ul>
+                        <li *ngFor="let feature of product.features.split(',')">
+                            {{ feature }}
+                        </li>
+                    </ul>
+                </div>
+                <div class="row">
+                    <ngx-color-selet [product]="product"
+                                     [selectedProductColors]="selectedProductColors"
+                                     (onColorSelect)="onSelectColor($event)"></ngx-color-selet>
+                </div>
             </div>
-            <div class="col-sm-5 p-0" *ngIf="product.sizes">
-                <ngx-size-select [items]="product.sizes" [selectedItems]="selectedSizes" label="Size"></ngx-size-select>
+            <div class="col-sm-6 d-flex align-content-end">
+                <p>Product sizes</p>
+                    <mat-list *ngIf="product.sizes" role="list">
+                        <mat-list-item role="listitem" *ngFor="let size of product.sizes">
+                            {{ size.name }}
+                        </mat-list-item>
+                    </mat-list>
+                    <!--                <ngx-size-select [items]="product.sizes" [selectedItems]="selectedSizes" label="Size"></ngx-size-select>-->
             </div>
         </div>
 
@@ -37,9 +44,8 @@
         <br>
         <div class="row">
             <div class="col-sm-3 p-0">
-                <input class="w-100 h-100" id="quantity" [(ngModel)]="quantity" type="number" min="1" max="1000" nbInput
-                       fullWidth status="primary"
-                       placeholder="Quantity">
+                <input class="w-100 h-100 rounded" [(ngModel)]="product.quantity" type="number" min="1" max="1000"
+                       nbInput fullWidth placeholder="Quantity">
             </div>
             <div class="col-sm ml-3 m-0 p-0">
                 <ngx-button label="Add To Cart"
@@ -48,9 +54,7 @@
                             [routerLink]="['/pages/basket']"></ngx-button>
             </div>
             <div class="ml-3 p-0">
-                <button (click)="onToggleFavorite()" class="w-100 btn-lg rounded-0">
-                    <nb-icon class="mark-as-favorite" [icon]="getHeartIcon()"></nb-icon>
-                </button>
+                <ngx-button (click)="onToggleFavorite()" icon="fas fa-heart"></ngx-button>
             </div>
         </div>
         <br>

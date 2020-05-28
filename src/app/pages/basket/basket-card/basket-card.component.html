@@ -5,21 +5,63 @@
                  [src]="basket.imgUrl"
                  [alt]="basket.name">
         </div>
-        <div class="col-sm-6 p-3">
+<!--        <div class="col-sm-6 p-3">-->
+<!--            <div class="row w-100 m-0 d-flex justify-content-center">-->
+<!--            </div>-->
+<!--            <div class="row w-100 m-0">-->
+<!--            </div>-->
+<!--        </div>-->
+        <div class="col-sm-4 p-5">
             <h4 class="pointer" [routerLink]="['/pages/catalog/detail', basket.id]">{{basket.name}}</h4>
             <p>Stock Code: {{basket.code}}</p>
             <ngx-color-selet [product]="basket" [selectedProductColors]="basket.selectedProductColors"></ngx-color-selet>
-            <ngx-size-select [items]="basket.sizes" [selectedItems]="basket.selectedSizes" label="Size"></ngx-size-select>
-        </div>
-        <div class="col-sm-3">
-            <p>Price: $ {{basket.price * basket.amount * basket.selectedProductColors.length * basket.selectedSizes.length | number}}</p>
             <label for="amount">Quantity: </label>
-            <input id="amount" nbInput fullWidth status="primary"
-                   [(ngModel)]="basket.amount"
-                   (ngModelChange)="onAmountUpdate()"
+            <input class="w-50 rounded" id="amount" nbInput fullWidth status="primary"
+                   [(ngModel)]="basket.quantity"
+                   (ngModelChange)="onQuantityUpdate()"
                    type="number" min="1" max="1000"
                    placeholder="Quantity">
-            <ngx-button (click)="onDeleteBasket()" icon="far fa-trash-alt"></ngx-button>
+            <!--            <ngx-size-select [items]="basket.sizes" [selectedItems]="basket.selectedSizes" label="Size"></ngx-size-select>-->
+        </div>
+        <div class="col-sm-3 p-5">
+            <p>Product sizes</p>
+            <mat-list role="list">
+                <mat-list-item role="listitem" *ngFor="let size of basket.selectedSizes">
+                    {{ size.name }}
+                </mat-list-item>
+            </mat-list>
+        </div>
+        <div class="col-sm-2 pt-5">
+            <div class="row">
+                <div class="col-sm-12 p-3">
+                    <h6>Price: $ {{basket.price * basket.quantity * basket.selectedProductColors.length * basket.selectedSizes.length | number}}</h6>
+                </div>
+                <ngx-button class="col-sm-12 p-3" (click)="openWindow()" label="Details" icon="fas fa-info-circle"></ngx-button>
+                <ng-template class="w-50" #contentTemplate let-data>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Color</th>
+                                <th scope="col">Size</th>
+                                <th scope="col">Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of getBasketDetail()">
+                                <td>{{item.color.name}}</td>
+                                <td>{{item.size.name}}</td>
+                                <td class="text-center">{{item.quantity}}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="3" class="text-center">Total Amount: {{basket.selectedProductColors.length * basket.selectedSizes.length * basket.quantity}} psc</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </ng-template>
+                <div class="col-sm-12 p-3">
+                    <ngx-button (click)="onDeleteBasket()" icon="far fa-trash-alt"></ngx-button>
+                </div>
+            </div>
         </div>
     </div>
 </nb-card>

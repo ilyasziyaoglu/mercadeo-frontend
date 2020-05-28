@@ -7,6 +7,7 @@ import {HttpService} from './base/http.service';
 })
 export class ProductService extends BaseService {
   private basePath = 'product';
+  public products: any = [];
 
   constructor(
       httpService: HttpService,
@@ -15,5 +16,20 @@ export class ProductService extends BaseService {
   }
   getBasePath(): string {
     return this.basePath;
+  }
+
+  filter(filter?, cb?): void {
+    const pageReq = {
+      filterDto: filter || {},
+      page: 0,
+      size: 50,
+    };
+    super.filter(pageReq, results => {
+      if (cb) {
+        cb(results.data || []);
+      } else {
+        this.products = results.data || [];
+      }
+    });
   }
 }

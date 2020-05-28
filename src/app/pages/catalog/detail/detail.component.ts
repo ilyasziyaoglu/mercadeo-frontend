@@ -14,7 +14,6 @@ export class DetailComponent implements OnInit {
     private product: any;
     selectedProductColors: any = [];
     selectedSizes: any = [];
-    quantity: number = 1;
     productImages: any = [];
     lastSelectedColor: any;
 
@@ -30,6 +29,7 @@ export class DetailComponent implements OnInit {
         this.route.paramMap.subscribe(params => {
             this.productService.get(parseInt(params.get('id'), 10), result => {
                 this.product = result;
+                this.product.quantity = 1;
                 this.product.sizes.forEach(size => size.disabled = this.product.isSizesOptional);
                 this.selectedSizes = this.product.sizes;
                 this.selectedProductColors = result.productColors.filter(pc => pc.status === 'ACTIVE').slice(0);
@@ -44,7 +44,7 @@ export class DetailComponent implements OnInit {
         const basket = {...this.product};
         basket.selectedProductColors = Object.assign([], this.selectedProductColors);
         basket.selectedSizes = Object.assign([], this.selectedSizes);
-        basket.amount = this.quantity;
+        basket.quantity = this.product.quantity;
         this.basketService.add(basket);
         window['storage'].updateItem('baskets');
     }

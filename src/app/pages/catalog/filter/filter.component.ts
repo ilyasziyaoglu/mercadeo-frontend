@@ -12,18 +12,16 @@ import {SizeService} from '../../../services/size.service';
 })
 export class FilterComponent implements OnInit {
 
-    @Output() onFilter = new EventEmitter();
-
     colors: any = [];
-    filter = {minPrice: null, maxPrice: null, categories: [], colors: []};
+    filter = {minPrice: null, maxPrice: null, categories: [], colorIds: []};
     brands: any = [];
 
     filterForm = new FormGroup({
-        brands: new FormControl([]),
-        colors: new FormControl([]),
+        brandIds: new FormControl([]),
+        colorIds: new FormControl([]),
+        sizeIds: new FormControl([]),
         minPrice: new FormControl(null),
         maxPrice: new FormControl(null),
-        sizes: new FormControl([]),
     });
     private sizes: any = [];
 
@@ -43,6 +41,6 @@ export class FilterComponent implements OnInit {
     }
 
     onSubmit(value: any) {
-        this.onFilter.emit(value);
+        this.productService.filter(value);
     }
 }

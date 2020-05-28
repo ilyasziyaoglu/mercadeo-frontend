@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {CategoryService} from '../../../services/category.service';
+import {ProductService} from '../../../services/product.service';
 
 @Component({
   selector: 'ngx-categories',
@@ -11,20 +12,22 @@ export class CategoriesComponent implements OnInit {
 
   constructor(
       private categoryService: CategoryService,
+      private productService: ProductService,
   ) { }
 
   ngOnInit() {
-    this.categoryService.getAll(categories => {
-      const firstLevels = categories.filter(c => c.level === 1);
-      firstLevels.forEach(flevel => {
-        flevel.children = categories.filter(c => c.parentId === flevel.id);
-        flevel.children.forEach(slevel => {
-          slevel.children = categories.filter(c => c.parentId === slevel.id);
-        });
-      });
-      this.categories = firstLevels;
-      console.log(this.categories);
-    });
+    this.categoryService.getCategoryTree(categoryTree => this.categories = categoryTree);
   }
 
+  onSelectFLevelCategory(flevel: any) {
+    this.productService.filter({category1: flevel.id});
+  }
+
+  onSelectSLevelCategory(slevel: Element) {
+    this.productService.filter({category2: slevel.id});
+  }
+
+  onSelectTLevelCategory(tlevel: Element) {
+    this.productService.filter({category3: tlevel.id});
+  }
 }

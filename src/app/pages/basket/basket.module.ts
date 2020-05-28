@@ -1,13 +1,14 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {BasketCardComponent} from './basket-card/basket-card.component';
-import {NbCardModule, NbInputModule, NbSelectModule} from '@nebular/theme';
+import {NbCardModule, NbInputModule, NbListModule, NbSelectModule} from '@nebular/theme';
 import {FormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {BasketComponent} from './basket.component';
 import {CatalogModule} from '../catalog/catalog.module';
 import {AtomsModule} from '../../atoms/atoms.module';
 import {MatGridListModule} from '@angular/material/grid-list';
+import {MatListModule} from '@angular/material/list';
 
 @NgModule({
     declarations: [
@@ -26,7 +27,9 @@ import {MatGridListModule} from '@angular/material/grid-list';
         RouterModule,
         CatalogModule,
         AtomsModule,
-        MatGridListModule
+        MatGridListModule,
+        NbListModule,
+        MatListModule
     ]
 })
 export class BasketModule {

@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row m-3">
     <div class="col-sm-3">
         <ngx-profile-card [user]="user"></ngx-profile-card>
     </div>
@@ -15,16 +15,8 @@
                             <p class="text-center"><a *ngIf="orders.length == 0" [routerLink]="['']">Shop Now</a></p>
                         </div>
                         <div class="row" *ngIf="storage.favorites">
-                            <ngx-product-card class="float-left" *ngFor="let productModel of storage.favorites"
+                            <ngx-product-card class="col-sm-3 float-left" *ngFor="let productModel of storage.favorites"
                                               [product]="productModel"></ngx-product-card>
-                        </div>
-                    </nb-tab>
-                    <nb-tab tabTitle="My Designs" tabIcon="color-palette-outline" responsive>
-                        <p class="text-center">Check the status of orders or browse through your past purchases.</p>
-                        <hr>
-                        <p class="text-center"><a *ngIf="orders.length == 0" [routerLink]="['']">Shop Now</a></p>
-                        <div class="row" *ngFor="let order of orders">
-                            <ngx-profile-order></ngx-profile-order>
                         </div>
                     </nb-tab>
                     <nb-tab tabTitle="My Orders" tabIcon="list-outline" responsive>

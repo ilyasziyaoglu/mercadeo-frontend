@@ -45,7 +45,6 @@ video {
 
 input {
   border-color: lightgrey !important;
-  border-radius: 0 !important;
   &:hover {
     border-color: black !important;
   }
@@ -88,4 +87,8 @@ button {
 
 .product-description {
   text-align: justify;
+}
+
+mat-list-item {
+  height: 1.5rem !important;
 }

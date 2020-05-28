@@ -1,13 +1,14 @@
 <div class="row mt-3 mb-3" *ngIf="product">
     <div class="row">Colors: </div>
     <div class="row" *ngIf="product.productColors">
-        <div class="color" *ngFor="let productColor of product.productColors"
+        <div class="color shadow d-flex justify-content-center align-content-center" *ngFor="let productColor of product.productColors"
              [ngClass]="{'active': includes(productColor)}"
              (click)="onSelectColor(productColor)"
              [ngStyle]="{'background-image': 'url(\'' + productColor.color.imgUrl + '\')',
                         'opacity': productColor.status === 'ACTIVE' ? 1 : 0.5,
                         'background-repeat': 'no-repeat',
                         'background-size': '100% 100%'}">
+            <mat-icon class="shadow-lg" *ngIf="includes(productColor)">done</mat-icon>
         </div>
     </div>
 </div>

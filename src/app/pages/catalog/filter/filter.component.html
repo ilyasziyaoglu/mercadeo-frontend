@@ -1,50 +1,41 @@
-<nb-card class="m-0 p-3">
-    <form [formGroup]="filterForm" (ngSubmit)="onSubmit(filterForm.value)">
-        <div class="row w-100 m-0 pt-3">
-            <mat-form-field class="w-100">
-                <mat-label>Brand</mat-label>
-                <mat-select formControlName="brands" multiple>
-                    <mat-option *ngFor="let brand of brands" [value]="brand">{{brand.name}}</mat-option>
-                </mat-select>
-            </mat-form-field>
-        </div>
+<!--<nb-card class="w-100 m-2">-->
+<form class="row m-3 w-100 d-flex justify-content-center" [formGroup]="filterForm" (ngSubmit)="onSubmit(filterForm.value)">
+    <!--        <div class="row w-100 m-0 pt-3">-->
+    <!--            <mat-form-field class="w-100">-->
+    <!--                <mat-label>Brand</mat-label>-->
+    <!--                <mat-select formControlName="brandIds" multiple>-->
+    <!--                    <mat-option *ngFor="let brand of brands" [value]="brand.id">{{brand.name}}</mat-option>-->
+    <!--                </mat-select>-->
+    <!--            </mat-form-field>-->
+    <!--        </div>-->
 
-        <div class="row w-100 m-0 pt-3">
-            <mat-form-field class="w-100">
-                <mat-label>Color</mat-label>
-                <mat-select formControlName="colors" multiple>
-                    <mat-option *ngFor="let color of colors" [value]="color">
-                        <div class="color" [style.backgroundColor]="color.name"></div>
-                        <span>{{color.name}}</span>
-                    </mat-option>
-                </mat-select>
-            </mat-form-field>
-        </div>
+    <!--        <div class="row w-100 m-0 pt-3">-->
+    <!--            <mat-form-field class="w-100">-->
+    <!--                <mat-label>Color</mat-label>-->
+    <!--                <mat-select formControlName="colorIds" multiple>-->
+    <!--                    <mat-option *ngFor="let color of colors" [value]="color.id">-->
+    <!--                        <div class="color" [style.backgroundColor]="color.name"></div>-->
+    <!--                        <span>{{color.name}}</span>-->
+    <!--                    </mat-option>-->
+    <!--                </mat-select>-->
+    <!--            </mat-form-field>-->
+    <!--        </div>-->
 
-        <div class="row w-100 m-0 pt-3">
-            <label class="w-100" for="min">Price</label>
-            <input class="col-sm" id="min" nbInput fullWidth status="primary"
-                   type="number" min="0" max="9999"
-                   formControlName="minPrice"
-                   placeholder="Min">
-            <input class="col-sm" id="max" nbInput fullWidth status="primary"
-                   formControlName="maxPrice"
-                   type="number" min="0" max="9999"
-                   placeholder="Max">
-        </div>
+    <div class="row filter-item">
+        <input class="col-sm rounded price-input" id="min" nbInput fullWidth status="primary"
+               type="number" min="0" max="9999"
+               formControlName="minPrice"
+               placeholder="Min Price">
+        <input class="col-sm rounded price-input" id="max" nbInput fullWidth status="primary"
+               formControlName="maxPrice"
+               type="number" min="0" max="9999"
+               placeholder="Max Price">
+    </div>
 
-        <div class="row w-100 m-0 pt-3">
-            <mat-form-field class="w-100">
-                <mat-label>Size</mat-label>
-                <mat-select formControlName="sizes" multiple>
-                    <mat-option *ngFor="let size of sizes" [value]="size">{{size.name}}</mat-option>
-                </mat-select>
-            </mat-form-field>
-        </div>
+    <nb-select class="filter-item" size="large" multiple placeholder="Size">
+        <nb-option *ngFor="let size of sizes" [value]="size.id">{{size.name}}</nb-option>
+    </nb-select>
 
-        <div class="row w-100 m-0 pt-3">
-            <ngx-button class="w-100" label="Filter" icon="fas fa-filter"></ngx-button>
-        </div>
-        <br>
-    </form>
-</nb-card>
+    <ngx-button class="filter-item" label="Filter" icon="fas fa-filter"></ngx-button>
+</form>
+<!--</nb-card>-->

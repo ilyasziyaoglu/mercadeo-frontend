@@ -17,4 +17,17 @@ export class CategoryService extends BaseService {
   getBasePath(): string {
     return this.basePath;
   }
+
+  getCategoryTree(cb) {
+    this.getAll(categories => {
+      const firstLevels = categories.filter(c => c.level === 1);
+      firstLevels.forEach(flevel => {
+        flevel.children = categories.filter(c => c.parentId === flevel.id);
+        flevel.children.forEach(slevel => {
+          slevel.children = categories.filter(c => c.parentId === slevel.id);
+        });
+      });
+      cb(firstLevels);
+    });
+  }
 }

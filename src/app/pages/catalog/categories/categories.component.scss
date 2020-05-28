@@ -1,77 +1,52 @@
-ul {
-  list-style-type: none;
+HTML CSSResult
+EDIT ON
+
+nav {
+  display: block;
+  text-align: center;
+}
+
+nav ul {
   margin: 0;
   padding: 0;
-  overflow: hidden;
-  background-color: #333;
+  list-style: none;
 }
 
-.flevel-ul {
-  width: 100%;
+.nav a {
+  display: block;
+  color: #fff;
+  padding: 1.2em 2.5em;
+  text-transform: uppercase;
+  font-size: 80%;
+  letter-spacing: 2px;
+  position: relative;
 }
 
-.slevel-ul {
-  width: 15%;
+.nav li {
+  position: relative;
 }
 
-a {
-  cursor: pointer;
-}
-
-.slevel-ul {
-  display: none;
+/* submenu positioning*/
+.nav ul {
   position: absolute;
-  z-index: 99;
+  white-space: nowrap;
+  z-index: 1;
+  left: -99999em;
 }
 
-.flevel-li {
-  float: left;
-  &:hover {
-    .slevel-ul {
-      display: block;
-    }
-  }
+.nav > li:hover > ul {
+  left: auto;
+  min-width: 100%;
 }
 
-.tlevel-ul {
-  display: none;
-  z-index: 9999;
-}
 
-.tlevel-li {
+.nav > li li:hover > ul {
   left: 100%;
+  top: 0;
 }
 
-.slevel-li {
-  &:hover {
-    .tlevel-ul {
-      display: block;
-    }
-  }
-}
-
-.flevel-li a {
-  display: block;
-  color: white;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-}
-
-.flevel-li a:hover {
-  background-color: #111;
-  color: white;
-}
-
-.slevel-li a {
-  display: block;
-  color: white;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-}
-
-.slevel-li a:hover {
-  background-color: #111;
-  color: white;
+// OZUMUNKULER
+li :hover {
+  cursor: pointer;
+  background-color: black;
 }

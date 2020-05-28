@@ -1,13 +1,13 @@
-<div class="row m-2">
-    <ul class="flevel-ul rounded">
-        <li class="flevel-li" *ngFor="let flevel of categories"><a>{{flevel.name}}</a>
-            <ul class="slevel-ul">
-                <li class="slevel-li" *ngFor="let slevel of flevel.children"><a>{{slevel.name}}</a>
-<!--                    <ul class="tlevel-ul">-->
-<!--                        <li class="tlevel-li" *ngFor="let tlevel of slevel.children"><a>{{tlevel.name}}</a></li>-->
-<!--                    </ul>-->
+<nav class="row m-0 w-100 bg-dark d-flex justify-content-center">
+    <ul class="nav bg-dark">
+        <li *ngFor="let flevel of categories"><a (click)="onSelectFLevelCategory(flevel)">{{flevel.name}}</a>
+            <ul class="bg-dark">
+                <li *ngFor="let slevel of flevel.children"><a (click)="onSelectSLevelCategory(slevel)">{{slevel.name}}</a>
+                    <ul class="bg-dark">
+                        <li *ngFor="let tlevel of slevel.children"><a (click)="onSelectTLevelCategory(tlevel)">{{tlevel.name}}</a></li>
+                    </ul>
                 </li>
             </ul>
         </li>
     </ul>
-</div>
+</nav>

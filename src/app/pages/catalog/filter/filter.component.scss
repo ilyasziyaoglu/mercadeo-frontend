@@ -1,10 +1,5 @@
 :host * :not(i) {
   font-family: Optima,serif;
-  position: static;
-}
-
-nb-card {
-  position: static;
 }
 
 p {
@@ -14,12 +9,12 @@ p {
 
 nb-select {
   filter: grayscale(1);
+  min-width: 250px;
 }
 
 input {
-  margin: 0.5rem;
+  padding: 10px !important;
   border-color: lightgrey !important;
-  border-radius: 0 !important;
   &:hover {
     border-color: black !important;
   }
@@ -39,3 +34,25 @@ input {
   transform: scale(1.2);
   border: 1px solid black;
 }
+
+.filter-item {
+  margin: 10px;
+}
+
+.price-input {
+  min-width: 100px;
+  margin: 0 5px;
+}
+
+@media only screen and (max-width: 600px)  {
+  .price-input {
+    width: 100%;
+    margin: 5px;
+  }
+
+  .filter-item {
+    width: 100%;
+    margin: 5px;
+  }
+}
+

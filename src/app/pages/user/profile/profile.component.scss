@@ -1,5 +1,5 @@
-ngx-product-card {
-  width: 32.9%;
-  margin: 0.2%;
+@media only screen and (max-width: 600px)  {
+  .col-sm-3 {
+    width: 50%;
+  }
 }
-

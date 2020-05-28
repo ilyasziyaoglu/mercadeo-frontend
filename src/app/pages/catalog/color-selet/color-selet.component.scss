@@ -15,5 +15,9 @@
 
 .active {
   transform: scale(1.2);
-  border: 1px solid black;
+  border: 1px solid white;
+}
+
+mat-icon {
+  color: white;
 }
