@@ -18,4 +18,9 @@ export class UserService extends BaseService {
   getBasePath(): string {
     return this.basePath;
   }
+
+  logOut() {
+    window['storage'].setItem('token', null);
+    window['storage'].setItem('user', null);
+  }
 }

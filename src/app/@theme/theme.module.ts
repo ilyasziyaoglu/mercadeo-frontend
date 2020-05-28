@@ -42,6 +42,7 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatButtonModule} from '@angular/material/button';
 import {RouterModule} from '@angular/router';
 import {MatBadgeModule} from "@angular/material/badge";
+import {MatIconModule} from '@angular/material/icon';
 
 const NB_MODULES = [
   NbLayoutModule,
@@ -75,7 +76,7 @@ const PIPES = [
 ];
 
 @NgModule({
-	imports: [CommonModule, ...NB_MODULES, MatMenuModule, MatButtonModule, RouterModule, MatBadgeModule],
+    imports: [CommonModule, ...NB_MODULES, MatMenuModule, MatButtonModule, RouterModule, MatBadgeModule, MatIconModule],
   exports: [CommonModule, ...PIPES, ...COMPONENTS],
   declarations: [...COMPONENTS, ...PIPES],
 })
