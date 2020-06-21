@@ -5,15 +5,15 @@ import {HttpService} from './base/http.service';
 @Injectable({
   providedIn: 'root',
 })
-export class ProductColorService extends BaseService {
-  private basePath = 'product-color';
+export class OrderService extends BaseService {
+  private basePath = 'order';
+  public order: any;
 
   constructor(
       httpService: HttpService,
   ) {
     super(httpService);
   }
-
   getBasePath(): string {
     return this.basePath;
   }

@@ -23,20 +23,23 @@
                         </li>
                     </ul>
                 </div>
-                <div class="row">
-                    <ngx-color-selet [product]="product"
-                                     [selectedProductColors]="selectedProductColors"
-                                     (onColorSelect)="onSelectColor($event)"></ngx-color-selet>
-                </div>
             </div>
-            <div class="col-sm-6 d-flex align-content-end">
-                <p>Product sizes</p>
+            <div class="col-sm-6">
+                <div class="row">
+                    <p class="w-100">Sizes: </p>
                     <mat-list *ngIf="product.sizes" role="list">
                         <mat-list-item role="listitem" *ngFor="let size of product.sizes">
                             {{ size.name }}
                         </mat-list-item>
                     </mat-list>
-                    <!--                <ngx-size-select [items]="product.sizes" [selectedItems]="selectedSizes" label="Size"></ngx-size-select>-->
+                </div>
+
+                <div class="row">
+                    <ngx-color-selet [product]="product"
+                                     [selectedProductColors]="selectedProductColors"
+                                     (onColorSelect)="onSelectColor($event)"></ngx-color-selet>
+                </div>
+                <!--                <ngx-size-select [items]="product.sizes" [selectedItems]="selectedSizes" label="Size"></ngx-size-select>-->
             </div>
         </div>
 
@@ -67,15 +70,15 @@
         </div>
         <br>
 
-<!--        <div class="row">-->
-<!--            <h6>Return and Refun Policy</h6>-->
-<!--            <p style="text-align: justify;">I’m a Return and Refund policy. I’m a great place to let your-->
-<!--                customers-->
-<!--                know what to do in case they are dissatisfied with their purchase. Having a straightforward refund-->
-<!--                or-->
-<!--                exchange policy is a great way to build trust and reassure your customers that they can buy with-->
-<!--                confidence.</p>-->
-<!--        </div>-->
+        <!--        <div class="row">-->
+        <!--            <h6>Return and Refun Policy</h6>-->
+        <!--            <p style="text-align: justify;">I’m a Return and Refund policy. I’m a great place to let your-->
+        <!--                customers-->
+        <!--                know what to do in case they are dissatisfied with their purchase. Having a straightforward refund-->
+        <!--                or-->
+        <!--                exchange policy is a great way to build trust and reassure your customers that they can buy with-->
+        <!--                confidence.</p>-->
+        <!--        </div>-->
 
     </div>
 </div>

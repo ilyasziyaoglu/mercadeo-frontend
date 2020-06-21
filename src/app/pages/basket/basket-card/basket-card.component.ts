@@ -41,7 +41,7 @@ export class BasketCardComponent implements OnInit {
     openWindow() {
         this.windowService.open(
             this.contentTemplate,
-            { title: 'Order Details', context: null },
+            { title: 'Order Details', context: { text: 'some text to pass into template' } },
         );
     }
 

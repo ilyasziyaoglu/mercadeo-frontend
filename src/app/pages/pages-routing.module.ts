@@ -9,6 +9,7 @@ import {ShopComponent} from './shop/shop.component';
 import {CustomerCareComponent} from './customer-care/customer-care.component';
 import {ContactComponent} from './contact/contact.component';
 import {AboutComponent} from './about/about.component';
+import {DeliveryInformationComponent} from './delivery-information/delivery-information.component';
 
 const routes: Routes = [{
   path: '',
@@ -37,6 +38,10 @@ const routes: Routes = [{
     {
       path: 'basket',
       component: BasketComponent,
+    },
+    {
+      path: 'delivery-information',
+      component: DeliveryInformationComponent,
     },
     {
       path: 'catalog',

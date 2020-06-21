@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import {NbAccordionModule, NbCardModule, NbMenuModule} from '@nebular/theme';
+import {NbAccordionModule, NbCardModule, NbMenuModule, NbRadioModule, NbTooltipModule} from '@nebular/theme';
 
 import { ThemeModule } from '../@theme/theme.module';
 import { PagesComponent } from './pages.component';
@@ -15,6 +15,9 @@ import { CustomerCareComponent } from './customer-care/customer-care.component';
 import { MapsModule } from './maps/maps.module';
 import { CarouselComponent } from './carousel/carousel.component';
 import { AtomsModule } from '../atoms/atoms.module';
+import { DeliveryInformationComponent } from './delivery-information/delivery-information.component';
+import {FormsModule} from '@angular/forms';
+import {MatIconModule} from '@angular/material/icon';
 
 @NgModule({
     imports: [
@@ -27,6 +30,10 @@ import { AtomsModule } from '../atoms/atoms.module';
         MapsModule,
         AtomsModule,
         NbAccordionModule,
+        NbRadioModule,
+        FormsModule,
+        MatIconModule,
+        NbTooltipModule
     ],
   declarations: [
     PagesComponent,
@@ -37,6 +44,7 @@ import { AtomsModule } from '../atoms/atoms.module';
     ContactComponent,
     CustomerCareComponent,
     CarouselComponent,
+    DeliveryInformationComponent,
   ],
     exports: [
         CatalogModule,

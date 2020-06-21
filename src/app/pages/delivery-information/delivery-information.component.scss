@@ -1,0 +1,18 @@
+nb-radio {
+  cursor: pointer;
+}
+
+.add-button {
+  color: white;
+  background-color: black;
+  border-radius: 50%;
+  cursor: pointer;
+  float: left;
+}
+
+input {
+  border-color: lightgrey !important;
+  &:hover {
+    border-color: black !important;
+  }
+}

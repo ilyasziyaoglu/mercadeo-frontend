@@ -9,6 +9,7 @@
                         'background-repeat': 'no-repeat',
                         'background-size': '100% 100%'}">
             <mat-icon class="shadow-lg" *ngIf="includes(productColor)">done</mat-icon>
+            <mat-icon class="shadow-lg" style="margin: 3px; transform: scale(1.5);" *ngIf="productColor.status !== 'ACTIVE'">close</mat-icon>
         </div>
     </div>
 </div>

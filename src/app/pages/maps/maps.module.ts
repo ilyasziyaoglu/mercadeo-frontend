@@ -21,7 +21,7 @@ import {GmapsComponent} from './gmaps/gmaps.component';
     NbCardModule,
   ],
     exports: [
-        GmapsComponent
+        GmapsComponent,
     ],
   declarations: [
     ...routedComponents,

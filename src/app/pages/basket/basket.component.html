@@ -39,8 +39,30 @@
                 <h6 class="col-sm">$ {{ calculateTotalPrice() | number}}</h6>
             </div>
             <br><br>
-            <div class="row">
-                <ngx-button class="w-100" (click)="checkout()" label="Checkout" icon="fas fa-lock"></ngx-button>
+            <div class="row" [style.display]="displayOrderForm">
+                <h3>Customer Info</h3>
+                <div class="row w-100 ">
+                    <input class="w-100 m-3" [(ngModel)]="orderForm.fullName.value" type="text" nbInput fullWidth placeholder="Name Surname">
+                    <input class="w-100 m-3" [(ngModel)]="orderForm.phone.value" type="text" nbInput fullWidth placeholder="Phone">
+                    <input class="w-100 m-3" [(ngModel)]="orderForm.email.value" type="text" nbInput fullWidth placeholder="Email">
+                </div>
+                <div class="mt-3">
+                    <h3 class="float-left">Address Info</h3>
+                    <mat-icon (click)="onAddNewAddress()" nbTooltip="Add New Address" class="add-button m-2">add</mat-icon>
+                </div>
+                <nb-radio-group class="row m-0 w-100" [(ngModel)]="orderForm.address.value">
+                    <nb-radio class="p-3"
+                              *ngFor="let address of addresses"
+                              [value]="address.value">
+                        <h6>{{ address.name }}</h6>{{ address.value }}
+                    </nb-radio>
+                </nb-radio-group>
+                <div class="row m-3">
+                    <ngx-button class="w-100" (click)="checkout()" label="Finish Order" icon="fas fa-lock"></ngx-button>
+                </div>
+            </div>
+            <div class="row m-3" [style.display]="displayOrderForm === 'none' ? 'block' : 'none' ">
+                <ngx-button class="w-100" (click)="preapreOrder()" label="Continue Order" icon="fas fa-lock"></ngx-button>
             </div>
         </nb-card>
     </div>

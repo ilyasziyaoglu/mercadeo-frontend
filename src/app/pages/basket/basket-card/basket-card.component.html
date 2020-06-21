@@ -5,12 +5,12 @@
                  [src]="basket.imgUrl"
                  [alt]="basket.name">
         </div>
-<!--        <div class="col-sm-6 p-3">-->
-<!--            <div class="row w-100 m-0 d-flex justify-content-center">-->
-<!--            </div>-->
-<!--            <div class="row w-100 m-0">-->
-<!--            </div>-->
-<!--        </div>-->
+        <!--        <div class="col-sm-6 p-3">-->
+        <!--            <div class="row w-100 m-0 d-flex justify-content-center">-->
+        <!--            </div>-->
+        <!--            <div class="row w-100 m-0">-->
+        <!--            </div>-->
+        <!--        </div>-->
         <div class="col-sm-4 p-5">
             <h4 class="pointer" [routerLink]="['/pages/catalog/detail', basket.id]">{{basket.name}}</h4>
             <p>Stock Code: {{basket.code}}</p>
@@ -37,24 +37,26 @@
                     <h6>Price: $ {{basket.price * basket.quantity * basket.selectedProductColors.length * basket.selectedSizes.length | number}}</h6>
                 </div>
                 <ngx-button class="col-sm-12 p-3" (click)="openWindow()" label="Details" icon="fas fa-info-circle"></ngx-button>
-                <ng-template class="w-50" #contentTemplate let-data>
+                <ng-template class="w-50" #contentTemplate>
                     <table class="table">
                         <thead>
-                            <tr>
-                                <th scope="col">Color</th>
-                                <th scope="col">Size</th>
-                                <th scope="col">Amount</th>
-                            </tr>
+                        <tr>
+                            <th scope="col">Color</th>
+                            <th scope="col">Size</th>
+                            <th scope="col">Amount</th>
+                        </tr>
                         </thead>
                         <tbody>
-                            <tr *ngFor="let item of getBasketDetail()">
-                                <td>{{item.color.name}}</td>
-                                <td>{{item.size.name}}</td>
-                                <td class="text-center">{{item.quantity}}</td>
-                            </tr>
-                            <tr>
-                                <td colspan="3" class="text-center">Total Amount: {{basket.selectedProductColors.length * basket.selectedSizes.length * basket.quantity}} psc</td>
-                            </tr>
+                        <tr *ngFor="let item of getBasketDetail()">
+                            <td>{{item.color.name}}</td>
+                            <td>{{item.size.name}}</td>
+                            <td class="text-center">{{item.quantity}}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" class="text-center">Total
+                                Amount: {{basket.selectedProductColors.length * basket.selectedSizes.length * basket.quantity}} psc
+                            </td>
+                        </tr>
                         </tbody>
                     </table>
                 </ng-template>

@@ -25,7 +25,7 @@ export class BasketService {
     includes(basket) {
         if (window['storage'].baskets) {
             for (const po of window['storage'].baskets) {
-                if (basket.id == po.id) {
+                if (basket.id === po.id) {
                     return true;
                 }
             }
@@ -38,7 +38,7 @@ export class BasketService {
         if (window['storage'].baskets) {
             let index = 0;
             for (const productInBasket of window['storage'].baskets) {
-                if (newProduct.id == productInBasket.id) {
+                if (newProduct.id === productInBasket.id) {
                     productInBasket.quantity += newProduct.quantity;
                     productInBasket.selectedProductColors =
                         productInBasket.selectedProductColors.concat(newProduct.selectedProductColors);
@@ -56,7 +56,7 @@ export class BasketService {
         if (window['storage'].baskets) {
             let index = 0;
             for (const po of window['storage'].baskets) {
-                if (basket.id == po.id) {
+                if (basket.id === po.id) {
                     window['storage'].baskets.splice(index, 1);
                     window['storage'].updateItem('baskets');
                     return true;

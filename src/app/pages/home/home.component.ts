@@ -14,15 +14,14 @@ export class HomeComponent implements OnInit {
     constructor(
         private categoryService: CategoryService,
         private productService: ProductService,
-    ) {
-    }
+    ) {}
 
     ngOnInit() {
         this.categoryService.getCategoryTree(categories => {
             this.categoryTree = categories;
             categories.forEach(flevel => {
-                this.productService.filter({page: 0, size: 4, filterDto: {category1: flevel.id}}, products => {
-                    this.categorizedProducts.push(products.data);
+                this.productService.filterBySize({category1: flevel.id}, 4, products => {
+                    this.categorizedProducts.push(products);
                 });
             });
         });

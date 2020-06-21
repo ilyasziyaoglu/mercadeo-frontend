@@ -9,27 +9,23 @@
     <ngx-categories class="w-100"></ngx-categories>
     <ngx-carousel></ngx-carousel>
 
-    <div class="row m-3">
-    <span *ngFor="let products of categorizedProducts; let i = index">
-        <span *ngIf="products">
-            <br><br>
-            <h2 class="default-text-properties">~ {{categoryTree[i].name}} ~</h2>
-            <br><br>
-            <div class="row  m-5 d-flex justify-content-center">
-              <div class="col-sm-3" *ngFor="let product of products">
-                <ngx-product-card [product]="product"></ngx-product-card>
-              </div>
-            </div>
+    <div class="row w-100 m-3">
+        <span *ngFor="let products of categorizedProducts; let i = index">
+            <span *ngIf="products.length > 0">
+                <h2 class="m-3 default-text-properties">~ {{categoryTree[i].name}} ~</h2>
+                <div class="row  m-5 d-flex justify-content-center">
+                  <div class="col-sm-3" *ngFor="let product of products">
+                    <ngx-product-card [product]="product"></ngx-product-card>
+                  </div>
+                </div>
 
-            <hr>
+                <hr>
+            </span>
         </span>
-    </span>
+    </div>
 
-        <br><br>
-        <h2 class="default-text-properties">~ Contact Us ~</h2>
-        <br><br>
-
+    <div class="row w-100 m-3 d-flex justify-content-center">
+        <h2 class="m-3 default-text-properties">~ Contact Us ~</h2>
         <ngx-contact></ngx-contact>
-        <br><br>
     </div>
 </div>

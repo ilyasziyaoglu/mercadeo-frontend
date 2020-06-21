@@ -18,11 +18,11 @@ export class ProductService extends BaseService {
     return this.basePath;
   }
 
-  filter(filter?, cb?): void {
+  filterBySize(filter?, size?, cb?): void {
     const pageReq = {
       filterDto: filter || {},
       page: 0,
-      size: 50,
+      size: size,
     };
     super.filter(pageReq, results => {
       if (cb) {
@@ -31,5 +31,9 @@ export class ProductService extends BaseService {
         this.products = results.data || [];
       }
     });
+  }
+
+  filter(filter?, cb?): void {
+    this.filterBySize(filter, 50, cb);
   }
 }
