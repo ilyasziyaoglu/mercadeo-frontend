@@ -11,7 +11,7 @@ import {BasketService} from '../../../services/basket.service';
 })
 export class DetailComponent implements OnInit {
 
-    private product: any;
+    product: any;
     selectedProductColors: any = [];
     selectedSizes: any = [];
     productImages: any = [];

@@ -16,4 +16,8 @@ export class CatalogHomeComponent implements OnInit {
     ngOnInit() {
         this.productService.filter();
     }
+
+    getProducts() {
+        return this.productService.products;
+    }
 }

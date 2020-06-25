@@ -9,7 +9,7 @@ import {Router} from '@angular/router';
   styleUrls: ['./categories.component.scss'],
 })
 export class CategoriesComponent implements OnInit {
-  private categories: any = [];
+  categories: any = [];
 
   constructor(
       private categoryService: CategoryService,

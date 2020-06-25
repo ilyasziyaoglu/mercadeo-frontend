@@ -23,7 +23,7 @@ export class FilterComponent implements OnInit {
         minPrice: new FormControl(null),
         maxPrice: new FormControl(null),
     });
-    private sizes: any = [];
+    sizes: any = [];
 
     constructor(
         private productService: ProductService,
