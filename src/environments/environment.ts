@@ -10,9 +10,7 @@
 
 export const environment = {
   production: false,
-  baseApiUrl: 'http://localhost:8080/',
-  baseAccessoryImgUrl: 'http://localhost:5000/accessory/',
-  baseModelImgUrl: 'http://localhost:5000/model/',
+  baseApiUrl: 'http://localhost:8000/',
   baseCarouselImgUrl: 'http://localhost:5000/carousel/',
   isAdmin: true,
 };
