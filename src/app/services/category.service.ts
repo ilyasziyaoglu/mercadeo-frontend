@@ -1,33 +1,24 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {BaseService} from './base/base-service';
-import {HttpService} from './base/http.service';
+import {HttpMethod, HttpService} from './base/http.service';
 
 @Injectable({
-  providedIn: 'root',
+    providedIn: 'root',
 })
 export class CategoryService extends BaseService {
-  private basePath = 'category';
+    private basePath = 'category';
 
-  constructor(
-      httpService: HttpService,
-  ) {
-    super(httpService);
-  }
+    constructor(
+        httpService: HttpService,
+    ) {
+        super(httpService);
+    }
 
-  getBasePath(): string {
-    return this.basePath;
-  }
+    getBasePath(): string {
+        return this.basePath;
+    }
 
-  getCategoryTree(cb) {
-    this.getAll(categories => {
-      const firstLevels = categories.filter(c => c.level === 1);
-      firstLevels.forEach(flevel => {
-        flevel.children = categories.filter(c => c.parentId === flevel.id);
-        flevel.children.forEach(slevel => {
-          slevel.children = categories.filter(c => c.parentId === slevel.id);
-        });
-      });
-      cb(firstLevels);
-    });
-  }
+    getCategoryTree(cb) {
+        this.getHttpService().doRequest(HttpMethod.GET, `${this.basePath}${this.GUEST}/tree`, '', cb);
+    }
 }
