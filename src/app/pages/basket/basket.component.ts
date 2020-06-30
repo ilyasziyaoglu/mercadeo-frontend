@@ -17,9 +17,9 @@ export class BasketComponent implements OnInit {
 
   user = window['storage'].user;
   orderForm = {
-    fullName: {value: this.user.fullName},
-    phone: {value: this.user.phone},
-    email: {value: this.user.email},
+    fullName: {value: this.user ? this.user.fullName : null},
+    phone: {value: this.user ? this.user.phone : null},
+    email: {value: this.user ? this.user.email : null},
     address: {value: ''},
   };
   addresses: any = [];
@@ -47,6 +47,10 @@ export class BasketComponent implements OnInit {
   }
 
   preapreOrder() {
+    if ( !window['storage'].user ) {
+      this.router.navigateByUrl('/auth/login');
+      return;
+    }
 
     const orderProducts = [];
     this.baskets.forEach(basket => {

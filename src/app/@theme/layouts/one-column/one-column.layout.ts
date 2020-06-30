@@ -13,7 +13,7 @@ import {Component} from '@angular/core';
             <!--        <ng-content select="nb-menu"></ng-content>-->
             <!--      </nb-sidebar>-->
 
-            <nb-layout-column style="background-color: #206ea1; position: static; width: 100%; padding: 0;">
+            <nb-layout-column style="position: static; width: 100%; padding: 0;">
             <ng-content select="router-outlet"></ng-content>
             </nb-layout-column>
 

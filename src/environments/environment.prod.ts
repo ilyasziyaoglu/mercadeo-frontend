@@ -6,6 +6,6 @@
 export const environment = {
   production: true,
   baseApiUrl: 'http://34.72.159.36:8000/',
-  baseCarouselImgUrl: 'http://34.72.159.36:5000/carousel/',
-  isAdmin: true,
+  baseCDNUrl: 'http://34.72.159.36:5000/',
+  loadingUrl: 'http://34.72.159.36:5000/z1pcpDCvLA5kf5SCqzPlkUxrkS3Cv5Ni.gif',
 };
